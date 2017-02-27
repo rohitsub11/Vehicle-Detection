@@ -91,7 +91,7 @@ The following images show the sliding window approach:
 ####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Vehicle detection is done by iterating through each sliding window, calculating the feautes for each sliding window then running that through the classifier. If a car is predicted, the sliding window boundaries are saved. Each sliding window that was predicted to have a car combined and a heatmap of all those rectangles is created. Only rectangles that overlap at least once are considered actual cars. This is to reduce the number of false positives.
-One detection optimization I made was to calculate the image HOG for the entire area of interest up front, rather than calculating the HOG for each sliding window. This gave me about a 3x speed improvement.
+One detection optimization I made was to calculate the image HOG for the entire area of interest up front, rather than calculating the HOG for each sliding window. This gave me a significant speed improvement.
 Below are the detected vehicles in the test images.
 
 ![pipeline1](output_images/subsample_window_test0.jpg)
@@ -104,7 +104,7 @@ Below are the detected vehicles in the test images.
 ### Video Implementation
 
 ####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-This vehicle detection method is run for each image in the project_video.mp4 file. Since we have more frames of reference, the heatmap for the past 3 frames are stored and the bounding boxes for the cars are detected from this history of heatmaps. This is to reduce the amount of jittering and jumping around of the detected vehicle boxes.
+This vehicle detection method is run for each image in the project_video.mp4 file. Since we have more frames of reference, the heatmap for the past 4 frames are stored and the bounding boxes for the cars are detected from this history of heatmaps. This is to reduce the amount of jittering and jumping around of the detected vehicle boxes.
 Here's a [link to my video result](output_project_video.mp4)
 
 

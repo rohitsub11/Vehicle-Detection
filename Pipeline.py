@@ -127,7 +127,7 @@ def pipeline(img):
         
     # Get the total heatmap over n frames
     sum_heatmap = np.sum(history.recent_heatmaps, axis=0)
-    # Filter out predictions that happened for 3 or less frames over n frames.
+    # Filter out predictions that happened for 4 or less frames over n frames.
     thres_heatmap = apply_threshold(sum_heatmap, 4)
     # Take the average to bring the heatmap back to expected range.
     #avg_heatmap = thres_heatmap // len(history.recent_heatmaps)
